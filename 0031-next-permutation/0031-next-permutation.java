@@ -19,5 +19,5 @@ class Solution {
 
 public void reverse(int[] A, int i, int j) {
     while(i < j) swap(A, i++, j--);
-}
+    }
 }
