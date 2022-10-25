@@ -1,40 +1,36 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] arr) {
+    public List<List<Integer>> threeSum(int[] nums) {
         
-        Set<List<Integer>> result  = new HashSet<>();
-        
-        if (arr == null || arr.length < 3)
-            return new ArrayList<>(result);
-       
-        Arrays.sort(arr);									// Sort the elements
+        int target = 0;
+        ArrayList<List<Integer>> sol = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0){
+            return sol;
+        }
+        Arrays.sort(nums);
+        for(int i = 0 ; i<=nums.length-1 ;i++){
+           
+                int remaining  = target - nums[i] ;
+                int front = i+1;
+                int back = nums.length-1;
+            
+                while(front < back){
+                    int twoSum = nums[front] + nums[back];
+                    if(twoSum < remaining)front++;
+                    else if(twoSum >remaining)back--;
+                    else{
+                        List<Integer> triplet = new ArrayList<>();
+                        triplet.add(nums[i]);
+                        triplet.add(nums[front]);
+                        triplet.add(nums[back]);
+                        sol.add(triplet);
 
-        int size = arr.length;
-        
-	    for (int i = 0; i < size - 2; i++)				// Now fix the first element and find the other two elements
-	    {
-	        // To find the other two elements, start two index variables
-	        // from two corners of the array and move them toward each other
-	        int left = i + 1;
-			int right = size - 1;
-	        
-	        while (left < right)
-	        {
-                int sum =  arr[i] + arr[left] + arr[right];
-                
-	            if (sum == 0)
-	            {
-                    result.add(Arrays.asList(arr[i], arr[left], arr[right]));
-                    left++;
-                    right--;
-	            }
-	            else if (sum < 0)
-	                left++;
-	            else 													
-	                right--;
-	        }
-	    }
-        return new ArrayList<>(result);
+                        while(front < back && nums[front] == triplet.get(1))front++;
+                        while(front < back && nums[back] == triplet.get(2))back--;  
+                    }
+                }
+            while( i+1<=nums.length-1 && nums[i] == nums[i+1]) i++;
+        }
+        return sol;
     }
 }
-
 
