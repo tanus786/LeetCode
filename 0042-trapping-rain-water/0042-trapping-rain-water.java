@@ -1,36 +1,16 @@
 class Solution {
     public int trap(int[] height) {
-        
-        int[] left = new int[height.length];
-        int[] right = new int[height.length];
-        left[0]=height[0];
-        right[height.length-1]=height[height.length-1];
-        int maxr= right[height.length-1];
-        int maxl=left[0];
-        for(int i=1;i<height.length;i++){
-            if(height[i]>left[i-1]){
-                left[i]=height[i];
-                maxl=height[i];
-            }
-            else{
-                left[i]=maxl;
+        int l = 0, r = height.length - 1, sum = 0, lMax = 0, rMax = 0;
+        while(l <= r){
+            lMax = Math.max(height[l], lMax);
+            rMax = Math.max(height[r], rMax);
+			 //why? because, for example if the lMax is smaller, we can sure that how much water could be trapped at the left pointer position is decided by the left side. 
+            if(lMax < rMax){
+                sum += lMax - height[l++];
+            }else{
+                sum += rMax - height[r--];
             }
         }
-        for(int j = height.length-2;j>=0;j--){
-            if(height[j]>right[j+1]){
-                right[j]=height[j];
-                maxr=height[j];
-            }
-            else{
-                right[j]=maxr;
-            }
-        }
-        
-        int ans=0;
-        for(int k=0;k<height.length;k++){
-            ans +=(Math.min(left[k], right[k]))-height[k];
-        }
-        return ans;
-        
+        return sum;
     }
 }
