@@ -7,5 +7,6 @@ class Solution {
 			else right--;
 		}
 		return maxWater;
+          
 	}   
 }
