@@ -6,7 +6,6 @@ class Solution {
 			if(height[left]<height[right]) left++;
 			else right--;
 		}
-		return maxWater;
-          
+		return maxWater;     
 	}   
 }
