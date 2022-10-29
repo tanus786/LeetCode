@@ -1,12 +1,12 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int max=1;
-        if(s.contains("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~")){
+if(s.contains("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~")){
             return 95;
         }
-        if(s.contains(" ")){
-            return 1;
-        }
+        // if(s.contains(" ")){
+        //     return 1;
+        // }
         if(s.length()==0){
             return 0;
         }
