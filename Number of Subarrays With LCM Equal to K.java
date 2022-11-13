@@ -23,3 +23,23 @@ class Solution {
         return (a*b)/gcd(a,b);
     }
 }
+## c++ solution
+
+
+class Solution {
+public:
+    int subarrayLCM(vector<int>& nums, int k) {
+         unsigned int ans = 0;
+        for (int i = 0; i < nums.size(); i++)
+    {
+            unsigned int currlcm = nums[i];
+            
+            for (int j = i; j < nums.size(); j++)
+        {
+            currlcm = lcm(currlcm, nums[j]);
+            ans += (currlcm == k) ? 1 : 0;
+        }
+    }
+        return ans;
+    }
+};
