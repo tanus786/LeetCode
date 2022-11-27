@@ -11,3 +11,8 @@ class Solution {
         return res;
     }
 }
+## It shows TLE
+
+## solution 2nd
+
+
