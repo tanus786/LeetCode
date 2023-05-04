@@ -4,7 +4,7 @@ class Solution {
         while(current != null && current.next!=null){
             if(current.val == current.next.val)
                 current.next = current.next.next;
-            if(current.next!=null && current.val != current.next.val)
+            else
                 current = current.next;
         }
         return head;
