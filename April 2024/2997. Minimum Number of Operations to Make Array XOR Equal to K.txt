@@ -1,0 +1,16 @@
+class Solution {
+    public int minOperations(int[] nums, int k) {
+        int xor = nums[0];
+        int bitMask = 1;
+        for(int i = 1; i<nums.length; i++){
+            xor ^= nums[i];
+        }
+        xor ^= k;
+        int res = 0;
+        while(xor!=0){
+            if((xor&bitMask) !=0) res++;
+            xor = xor>>1;
+        }
+        return res;
+    }
+}
