@@ -1,0 +1,9 @@
+class Solution {
+    public int subsetXORSum(int[] nums) {
+        return helper(nums,0,0);
+    }
+    public int helper(int[] nums, int i, int currVal){
+        if(i == nums.length) return currVal;
+        return helper(nums, i+1, currVal^nums[i]) + helper(nums, i+1, currVal);
+    }
+}
